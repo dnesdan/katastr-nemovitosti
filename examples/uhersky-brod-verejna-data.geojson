@@ -1,0 +1,83 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "obj-parcela-1",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              17.643049,
+              49.027467
+            ],
+            [
+              17.64308,
+              49.02746
+            ],
+            [
+              17.643085,
+              49.027459
+            ],
+            [
+              17.643431,
+              49.02738
+            ],
+            [
+              17.643436,
+              49.02739
+            ],
+            [
+              17.643442,
+              49.027417
+            ],
+            [
+              17.643485,
+              49.027595
+            ],
+            [
+              17.643495,
+              49.027656
+            ],
+            [
+              17.643164,
+              49.027686
+            ],
+            [
+              17.643049,
+              49.027467
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "obj-parcela-1",
+        "label": "Parcela 1 · k.ú. Uherský Brod",
+        "type": "parcel",
+        "registry_id": "CP.2793846742",
+        "geometry_note": "Skutečný polygon z INSPIRE WFS ČÚZK, prvek CP.2793846742. Deklarované osy EPSG:4326 převedeny do GeoJSON [délka, šířka]. Přesnost hranic není tímto dotazem stanovena; zobrazení nenahrazuje vytyčení. Zdroj © ČÚZK.",
+        "source_ids": [
+          "src-ruian-ku",
+          "src-wfs-parcela",
+          "src-wms-map"
+        ],
+        "cadastral_area": {
+          "code": "772984",
+          "name": "Uherský Brod"
+        },
+        "parcel": {
+          "number": "1",
+          "series": "land"
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "case_id": "uhersky-brod-verejna-data",
+    "mode": "research",
+    "as_of": "2026-11-02",
+    "crs": "WGS84 / longitude, latitude",
+    "note": "Geometrie podkladů případu; přesnost posuzuj podle původního zdroje."
+  }
+}

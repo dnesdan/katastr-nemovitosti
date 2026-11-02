@@ -1,0 +1,441 @@
+{
+  "schema_version": "source-catalogue/1.0",
+  "checked_at": "2026-11-02",
+  "verification": "Dokumentace a veřejné popisy. Živé výsledky jednotlivých adaptérů jsou samostatně v TESTING.md.",
+  "sources": [
+    {
+      "id": "ruian",
+      "name": "RÚIAN a veřejný dálkový přístup",
+      "url": "https://www.cuzk.gov.cz/ruian/RUIAN/Informace-o-RUIAN.aspx",
+      "provider": "ČÚZK",
+      "access": "public",
+      "implementation": "adapter",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "identity"
+      ],
+      "value": "Adresa, obec, katastr, stavební objekt. Kandidáty potvrdit podle celého zadání.",
+      "limitations": "Adresa není parcela ani jednotka; současný registr nevysvětluje starší číslování.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "cuzk-map",
+      "name": "Katastrální mapové služby a INSPIRE",
+      "url": "https://services.cuzk.gov.cz/",
+      "provider": "ČÚZK",
+      "access": "public",
+      "implementation": "adapter",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "identity",
+        "map",
+        "access"
+      ],
+      "value": "Publikované WMS/WMTS/WFS parcel a budov, vlastnické kategorie a nesoulady.",
+      "limitations": "Mapová přesnost je různá. Kategorie vlastnictví není jméno vlastníka.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "api-kn",
+      "name": "Bezplatné API KN",
+      "url": "https://api-kn.cuzk.gov.cz/Popis",
+      "provider": "ČÚZK",
+      "access": "registration",
+      "implementation": "manual",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "identity",
+        "rights"
+      ],
+      "value": "Vybraná popisná data a řízení; oficiální možnost automatizace.",
+      "limitations": "ApiKey, podmínky provozu, bez osobních údajů. Tento balík neobsahuje přihlášený API konektor.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "api-terms",
+      "name": "Podmínky API KN",
+      "url": "https://api-kn.cuzk.gov.cz/PodminkyUzivani",
+      "provider": "ČÚZK",
+      "access": "public",
+      "implementation": "manual",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "rights"
+      ],
+      "value": "Ověření způsobu registrace, klíče, limitů a dovoleného provozu.",
+      "limitations": "Klíč nevkládat do chatu a nepředávat jiné službě v rozporu s podmínkami.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "nahlizeni",
+      "name": "Nahlížení do katastru",
+      "url": "https://nahlizenidokn.cuzk.gov.cz/",
+      "provider": "ČÚZK",
+      "access": "interactive",
+      "implementation": "manual",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "identity",
+        "rights"
+      ],
+      "value": "Ruční interaktivní kontrola vybraných údajů a řízení.",
+      "limitations": "Podmínky nepovolují automatizované získávání; klient tuto službu nescrapuje.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "dpn",
+      "name": "Dálkový přístup pro neregistrované",
+      "url": "https://dpn.cuzk.gov.cz/",
+      "provider": "ČÚZK",
+      "access": "paid_identity_selected",
+      "implementation": "user_document",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "rights",
+        "documents",
+        "price"
+      ],
+      "value": "Jednorázový nákup výpisů a listin; uživatel nahraje originál.",
+      "limitations": "Některé výstupy vyžadují Identitu občana. Login a úhrada jsou oddělené.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "dp-outputs",
+      "name": "Druhy výstupů katastru",
+      "url": "https://www.cuzk.gov.cz/Katastr-nemovitosti/Poskytovani-udaju-z-KN/Dalkovy-pristup/Vystupy-z-KN-poskytovane-prostrednictvim-DP.aspx",
+      "provider": "ČÚZK",
+      "access": "public",
+      "implementation": "manual",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "documents",
+        "price"
+      ],
+      "value": "Popis úplných/částečných výpisů, listin, příloh a cenových výstupů.",
+      "limitations": "Cena může patřit celé skupině společně převáděných nemovitostí.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "dp-format",
+      "name": "Oznámení změn formátu výpisů",
+      "url": "https://www.cuzk.gov.cz/Aplikace-DP-do-KN/Aplikace-DP-do-KN/Archiv-DP.aspx",
+      "provider": "ČÚZK",
+      "access": "public",
+      "implementation": "manual",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "documents"
+      ],
+      "value": "Kontrola aktuální verze sestav a oznámených změn.",
+      "limitations": "Přechod NTŘ 3.0 byl oznámen na 2026-11-04; ne každý PDF obsahuje XML.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "ngup",
+      "name": "Národní geoportál územního plánování",
+      "url": "https://uzemniplanovani.gov.cz/",
+      "provider": "MMR",
+      "access": "public",
+      "implementation": "manual",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "planning"
+      ],
+      "value": "Vyhledání územně plánovacích dokumentací; následně prověřit text, mapu, změny a účinnost.",
+      "limitations": "Povinné používání odloženo do 2027-07-01; hledat rovněž obec, ORP a kraj.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "mmr-status",
+      "name": "Stav digitalizace územního plánování",
+      "url": "https://mmr.gov.cz/cs/ministerstvo/stavebni-pravo/digitalizace-uzemniho-planovani",
+      "provider": "MMR",
+      "access": "public",
+      "implementation": "manual",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "planning"
+      ],
+      "value": "Ověření přechodného režimu a aktuálního pokrytí NGÚP.",
+      "limitations": "Současný stav centrálního portálu nezaručuje úplnost pro konkrétní obec.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "dmvs",
+      "name": "Digitální mapa veřejné správy / DTM",
+      "url": "https://cuzk.gov.cz/DMVS/Poskytovani-dat.aspx",
+      "provider": "ČÚZK a kraje",
+      "access": "public_and_restricted",
+      "implementation": "manual",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "utilities",
+        "access"
+      ],
+      "value": "Veřejné mapy infrastruktury a území správců; další výdej podle režimu služby.",
+      "limitations": "Veřejné WFS území správců není kompletní otevřená vektorová síť. Mapa neprokazuje kapacitu připojení.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "heis-flood",
+      "name": "Záplavová území a aktivní zóny",
+      "url": "https://heis.vuv.cz/data/webmap/datovesady/isvs/zaplavuzemi/HTML_ISVS$zaplavuzemi$stazeni.asp?doc=full",
+      "provider": "VÚV TGM",
+      "access": "public",
+      "implementation": "manual",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "water"
+      ],
+      "value": "Úředně stanovená záplavová území a aktivní zóny, mapové a datové služby.",
+      "limitations": "Rozlišit vyhlášenou zónu, modelované nebezpečí a pojišťovací mapu. Absence není bezpečnost.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "aopk",
+      "name": "Ochrana přírody",
+      "url": "https://data.nature.cz/",
+      "provider": "AOPK ČR",
+      "access": "public",
+      "implementation": "manual",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "nature"
+      ],
+      "value": "Otevřené datasety chráněných území; u konkrétní vrstvy ověřit rozsah a licenční podmínky.",
+      "limitations": "Mapový průnik doplnit příslušným vyhlášením; nevyvozovat plošný zákaz bez dokumentu.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "npu",
+      "name": "Památková ochrana",
+      "url": "https://geoportal.npu.cz/",
+      "provider": "Národní památkový ústav",
+      "access": "public",
+      "implementation": "manual",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "heritage"
+      ],
+      "value": "Mapy územní ochrany a návaznost na Památkový katalog.",
+      "limitations": "Územní ochrana a individuální ochrana stavby jsou odlišné.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "cgs",
+      "name": "Geologie, sesuvy a důlní vlivy",
+      "url": "https://cgs.gov.cz/mapy-a-data/data",
+      "provider": "Česká geologická služba",
+      "access": "public",
+      "implementation": "manual",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "geology"
+      ],
+      "value": "Katalog geologických podkladů, mapových služeb, svahových nestabilit a poddolování.",
+      "limitations": "Vrstva má vlastní měřítko a pokrytí; evidence není stavebně-geologický průzkum.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "radon",
+      "name": "Radonová mapa 1 : 50 000",
+      "url": "https://geoportal.gov.cz/php/micka/record/basic/51bf1543-92ac-467d-a60e-4a8c0a010817",
+      "provider": "ČGS / Národní geoportál INSPIRE",
+      "access": "public",
+      "implementation": "manual",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "geology"
+      ],
+      "value": "Orientační radonový potenciál území a metadata.",
+      "limitations": "Nenahrazuje měření ani stanovení radonového indexu konkrétního pozemku.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "sekm",
+      "name": "Systém evidence kontaminovaných míst",
+      "url": "https://www.sekm.cz/",
+      "provider": "MŽP",
+      "access": "public",
+      "implementation": "manual",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "contamination"
+      ],
+      "value": "Evidované kontaminované a potenciálně kontaminované lokality; dohledat detail případu.",
+      "limitations": "Nenalezení lokality nedokazuje čistotu půdy ani vyloučení staršího provozu.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "spu",
+      "name": "Geoportál Státního pozemkového úřadu",
+      "url": "https://spu.gov.cz/geoportal-spu",
+      "provider": "SPÚ",
+      "access": "public",
+      "implementation": "manual",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "agriculture",
+        "access"
+      ],
+      "value": "BPEJ, pozemkové úpravy, společná zařízení a evidovaná odvodnění.",
+      "limitations": "Rozlišit návrh, schválení a skutečnou realizaci. Evidence nepokrývá všechny drenáže.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "vumop",
+      "name": "Půdní mapy a eKatalog",
+      "url": "https://geoportal.vumop.cz/index.php?page=ekatalog",
+      "provider": "VÚMOP",
+      "access": "public",
+      "implementation": "manual",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "agriculture"
+      ],
+      "value": "Půdní vlastnosti, BPEJ a související územní informace.",
+      "limitations": "Mapové podklady nenahrazují individuální rozbor ani rozhodnutí úřadu.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "lpis",
+      "name": "LPIS a veřejné služby",
+      "url": "https://mze.gov.cz/public/portal/mze/farmar/LPIS/ws-lpis",
+      "provider": "Ministerstvo zemědělství",
+      "access": "public",
+      "implementation": "manual",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "agriculture"
+      ],
+      "value": "Evidence užívání půdy a díly půdních bloků.",
+      "limitations": "Uživatel není automaticky vlastník, díl půdního bloku není katastrální parcela.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "noise",
+      "name": "Strategické hlukové mapy",
+      "url": "https://mzd.gov.cz/nova-mapova-aplikace-2022/",
+      "provider": "Ministerstvo zdravotnictví",
+      "access": "public",
+      "implementation": "manual",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "surroundings"
+      ],
+      "value": "Hlukové modely pro pokryté komunikace a aglomerace.",
+      "limitations": "Omezené územní a časové pokrytí; nejde o měření uvnitř domu.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "eia-sea",
+      "name": "EIA a SEA",
+      "url": "https://cenia.gov.cz/odborna-podpora/eiasea/informacni-systemy-eia-a-sea/",
+      "provider": "CENIA",
+      "access": "public",
+      "implementation": "manual",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "surroundings",
+        "planning"
+      ],
+      "value": "Dokumenty posuzovaných záměrů a koncepcí v okolí.",
+      "limitations": "Neobsahují všechny stavby; návrh a posuzování neznamenají povolení nebo realizaci.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "cuzk-open",
+      "name": "Otevřená geodata a reliéf",
+      "url": "https://ags.cuzk.gov.cz/opendata/",
+      "provider": "ČÚZK",
+      "access": "public",
+      "implementation": "manual",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "map",
+        "history"
+      ],
+      "value": "Otevřené podklady pro krajinný a výškový kontext, metadata a geoprohlížeč.",
+      "limitations": "Sklon či vizuální odhad neprokazují založení stavby, hranici nebo vedení sítě.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "ctu",
+      "name": "VPortal a sběr dat o internetu",
+      "url": "https://ctu.gov.cz/nga-sber-dat",
+      "provider": "Český telekomunikační úřad",
+      "access": "public",
+      "implementation": "manual",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "internet"
+      ],
+      "value": "Vykazované technologie a rychlostní kategorie pro adresní místo RÚIAN.",
+      "limitations": "Ověřit období; možnost objednávky a zřízení potvrdí poskytovatel.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "penb",
+      "name": "Průkazy energetické náročnosti",
+      "url": "https://mpo.gov.cz/cz/energetika/uspory-energie/uspory-v-praxi/prukazy-energeticke-narocnosti-budov/prukaz-energeticke-narocnosti-budovy--277417/",
+      "provider": "MPO",
+      "access": "user_document",
+      "implementation": "user_document",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "energy",
+        "documents"
+      ],
+      "value": "Výklad PENB dodaného vlastníkem; spárovat budovu a rozhodný stav.",
+      "limitations": "Jednotlivé průkazy nejsou obecně veřejné. Modelová spotřeba není účet za energie.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "building-files",
+      "name": "Nahlížení do stavebního spisu",
+      "url": "https://portal.gov.cz/sluzby-vs/nahlizeni-do-spisu-S5660",
+      "provider": "Portál veřejné správy",
+      "access": "entitlement",
+      "implementation": "user_document",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "documents",
+        "planning"
+      ],
+      "value": "Postup pro oprávněnou osobu a dodání dostupných stavebních rozhodnutí.",
+      "limitations": "Bankovní identita sama neuděluje právo nahlížet do libovolného cizího spisu.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "change-watch",
+      "name": "Sledování změn v katastru",
+      "url": "https://cuzk.gov.cz/Je-dobre-vedet/Zivotni-situace/FAQ-SSZ.aspx",
+      "provider": "ČÚZK",
+      "access": "registration",
+      "implementation": "manual",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "rights"
+      ],
+      "value": "Průvodce oficiální službou a interpretace oznámení.",
+      "limitations": "Rozsah je navázán na evidovaná práva uživatele; není to libovolný seznam cizích nemovitostí.",
+      "checked_at": "2026-11-02"
+    },
+    {
+      "id": "cadastral-decree",
+      "name": "Katastrální vyhláška",
+      "url": "https://e-sbirka.gov.cz/sb/2013/357",
+      "provider": "e-Sbírka",
+      "access": "public",
+      "implementation": "manual",
+      "coverage": "Česká republika; skutečný rozsah ověřit u konkrétní vrstvy či záznamu.",
+      "topics": [
+        "rights",
+        "documents"
+      ],
+      "value": "Ověření významu oddílů LV a aktuálních pravidel zápisů.",
+      "limitations": "Použít účinné znění k rozhodnému datu; stručný popis portálu nenahrazuje právní text.",
+      "checked_at": "2026-11-02"
+    }
+  ]
+}

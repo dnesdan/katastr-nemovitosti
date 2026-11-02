@@ -1,0 +1,266 @@
+{
+  "schema_version": "property-case/1.0",
+  "case": {
+    "id": "demo-vysocina-puda",
+    "title": "Louka, uživatel a přístupová cesta",
+    "purpose": "Porozumění zděděnému podílu",
+    "locality": "Vysočina · modelová situace",
+    "region": "Kraj Vysočina",
+    "created_at": "2026-11-02T10:00:00+01:00",
+    "as_of": "2026-11-02",
+    "mode": "synthetic",
+    "summary": "Model odděluje spoluvlastnický podíl od evidence užívání půdy. U návrhu cesty zůstává otevřená realizace i oprávnění přístupu; další územní vrstvy zatím nebyly prověřeny.",
+    "scope_note": "Syntetický učební případ. Všechny objekty, listiny, geometrie a nálezy jsou smyšlené; nejde o prověření reálné nemovitosti v uvedeném regionu.",
+    "sharing": "public-reviewed"
+  },
+  "objects": [
+    {
+      "id": "pozemek",
+      "type": "area",
+      "label": "Modelový pozemek P-1",
+      "cadastral_area": {
+        "code": "000000",
+        "name": "Fiktivní katastr pro model"
+      },
+      "source_ids": [],
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              15.52,
+              49.395
+            ],
+            [
+              15.522,
+              49.3954
+            ],
+            [
+              15.5216,
+              49.3963
+            ],
+            [
+              15.5198,
+              49.396
+            ],
+            [
+              15.52,
+              49.395
+            ]
+          ]
+        ]
+      },
+      "geometry_note": "Syntetická geometrie pro ukázku ovládání. Není mapou skutečné parcely ani podkladem pro měření."
+    },
+    {
+      "id": "blok",
+      "type": "area",
+      "label": "Modelový půdní blok",
+      "cadastral_area": {
+        "code": "000000",
+        "name": "Fiktivní katastr pro model"
+      },
+      "source_ids": [],
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              15.5221,
+              49.39545
+            ],
+            [
+              15.5233,
+              49.39565
+            ],
+            [
+              15.523,
+              49.3964
+            ],
+            [
+              15.5217,
+              49.3963
+            ],
+            [
+              15.5221,
+              49.39545
+            ]
+          ]
+        ]
+      },
+      "geometry_note": "Syntetická geometrie pro ukázku ovládání. Není mapou skutečné parcely ani podkladem pro měření."
+    },
+    {
+      "id": "cesta",
+      "type": "area",
+      "label": "Navržená cesta C · model",
+      "cadastral_area": {
+        "code": "000000",
+        "name": "Fiktivní katastr pro model"
+      },
+      "source_ids": [],
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            15.5196,
+            49.3948
+          ],
+          [
+            15.5235,
+            49.3955
+          ]
+        ]
+      },
+      "geometry_note": "Syntetická geometrie pro ukázku ovládání. Není mapou skutečné parcely ani podkladem pro měření."
+    }
+  ],
+  "sources": [],
+  "documents": [
+    {
+      "id": "podklad-puda",
+      "title": "Modelové podklady: půda a přístup",
+      "kind": "synthetic-teaching-document",
+      "sha256": "511b344ec6019e610ac6f8f6fedb570055fdd526c79a70af87a87f1884af9ef8",
+      "pages": 1,
+      "register_state_at": "",
+      "issued_at": "2026-11-02",
+      "imported_at": "2026-11-02T10:00:00+01:00",
+      "completeness": "unknown",
+      "seal_status": "not_checked",
+      "public": true
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-puda",
+      "document_id": "podklad-puda",
+      "locator": {
+        "page": 1,
+        "section": "1. Modelový soupis",
+        "note": "Syntetický učební dokument; citace se nevztahuje k reálné nemovitosti."
+      },
+      "quote": "Modelový spoluvlastnický podíl zkoumané osoby je 3/16.",
+      "observed_at": "2026-11-02",
+      "public": true
+    },
+    {
+      "id": "ev-uzivani",
+      "document_id": "podklad-puda",
+      "locator": {
+        "page": 1,
+        "section": "2. Modelový záznam užívání",
+        "note": "Syntetický učební dokument; citace se nevztahuje k reálné nemovitosti."
+      },
+      "quote": "V modelu LPIS je u dílu půdního bloku uveden uživatel Provozovatel A.",
+      "observed_at": "2026-11-02",
+      "public": true
+    },
+    {
+      "id": "ev-cesta",
+      "document_id": "podklad-puda",
+      "locator": {
+        "page": 1,
+        "section": "3. Přístup a plánované zařízení",
+        "note": "Syntetický učební dokument; citace se nevztahuje k reálné nemovitosti."
+      },
+      "quote": "Podklad k pozemkovým úpravám v modelu obsahuje návrh cesty C.",
+      "observed_at": "2026-11-02",
+      "public": true
+    }
+  ],
+  "findings": [
+    {
+      "id": "podil",
+      "title": "Podíl je potřeba uchovat jako přesný zlomek",
+      "topic": "rights",
+      "status": "supported",
+      "severity": "info",
+      "summary": "Modelový soupis uvádí 3/16. Podíl sám nevymezuje konkrétní fyzický výsek pozemku.",
+      "object_ids": [
+        "pozemek"
+      ],
+      "evidence_ids": [
+        "ev-puda"
+      ],
+      "next_step": "",
+      "public": true
+    },
+    {
+      "id": "uzivatel",
+      "title": "Uživatel půdy není vlastnický údaj",
+      "topic": "agriculture",
+      "status": "supported",
+      "severity": "medium",
+      "summary": "Modelová evidence užívání obsahuje Provozovatele A. Rozdílné jméno samo o sobě nemění vlastnictví popsané v jiném podkladu.",
+      "object_ids": [
+        "pozemek",
+        "blok"
+      ],
+      "evidence_ids": [
+        "ev-uzivani"
+      ],
+      "next_step": "",
+      "public": true
+    },
+    {
+      "id": "realizace",
+      "title": "Navržená cesta nemusí být hotová",
+      "topic": "access",
+      "status": "unverified",
+      "severity": "high",
+      "summary": "Máme modelový návrh cesty, nikoli doklad jejího provedení a režimu užívání.",
+      "object_ids": [
+        "pozemek",
+        "cesta"
+      ],
+      "evidence_ids": [
+        "ev-cesta"
+      ],
+      "next_step": "Dohledat stav realizace společného zařízení a příslušný titul přístupu.",
+      "public": true
+    },
+    {
+      "id": "bpej",
+      "title": "Půdní podklady zatím nebyly ověřeny",
+      "topic": "agriculture",
+      "status": "unverified",
+      "severity": "medium",
+      "summary": "BPEJ ani ochrana půdy nejsou v dostupných modelových podkladech zpracovány.",
+      "object_ids": [
+        "pozemek"
+      ],
+      "evidence_ids": [],
+      "next_step": "Prověřit SPÚ/VÚMOP pro potvrzenou skutečnou parcelu.",
+      "public": true
+    },
+    {
+      "id": "povoden",
+      "title": "Povodňová kontrola není dokončená",
+      "topic": "water",
+      "status": "unverified",
+      "severity": "medium",
+      "summary": "Absence provedené kontroly se nesmí změnit na tvrzení, že pozemek leží mimo záplavové území.",
+      "object_ids": [
+        "pozemek"
+      ],
+      "evidence_ids": [],
+      "next_step": "Porovnat skutečný polygon s příslušnými aktuálními podklady.",
+      "public": true
+    }
+  ],
+  "rights": [],
+  "next_documents": [
+    {
+      "id": "req-cesta",
+      "title": "Podklad k realizaci a užívání cesty",
+      "reason": "Rozliší návrh společného zařízení, jeho provedení a právní přístup.",
+      "source_url": "https://spu.gov.cz/geoportal-spu",
+      "for_finding": "realizace",
+      "priority": "high",
+      "status": "needed",
+      "public": true
+    }
+  ],
+  "research_log": []
+}

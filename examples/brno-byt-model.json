@@ -1,0 +1,359 @@
+{
+  "schema_version": "property-case/1.0",
+  "case": {
+    "id": "demo-brno-byt",
+    "title": "Byt, terasa a právo přístupu",
+    "purpose": "Příprava koupě bytu",
+    "locality": "Brno · modelová situace",
+    "region": "Jihomoravský kraj",
+    "created_at": "2026-11-02T10:00:00+01:00",
+    "as_of": "2026-11-02",
+    "mode": "synthetic",
+    "summary": "Model ukazuje, proč porovnat slib v inzerátu s vymezením jednotky a společných částí. Terasa je v podkladu popsána jako společná část; úplný právní stav, sklep a průjezd zatím nejsou doloženy.",
+    "scope_note": "Syntetický učební případ. Všechny objekty, listiny, geometrie a nálezy jsou smyšlené; nejde o prověření reálné nemovitosti v uvedeném regionu.",
+    "sharing": "public-reviewed"
+  },
+  "objects": [
+    {
+      "id": "dum",
+      "type": "building",
+      "label": "Modelový dům A",
+      "cadastral_area": {
+        "code": "000000",
+        "name": "Fiktivní katastr pro model"
+      },
+      "source_ids": [],
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              16.6001,
+              49.1951
+            ],
+            [
+              16.6007,
+              49.1951
+            ],
+            [
+              16.6007,
+              49.1955
+            ],
+            [
+              16.6001,
+              49.1955
+            ],
+            [
+              16.6001,
+              49.1951
+            ]
+          ]
+        ]
+      },
+      "geometry_note": "Syntetická geometrie pro ukázku ovládání. Není mapou skutečné parcely ani podkladem pro měření."
+    },
+    {
+      "id": "terasa",
+      "type": "area",
+      "label": "Terasa T · model",
+      "cadastral_area": {
+        "code": "000000",
+        "name": "Fiktivní katastr pro model"
+      },
+      "source_ids": [],
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              16.6007,
+              49.19515
+            ],
+            [
+              16.60092,
+              49.19515
+            ],
+            [
+              16.60092,
+              49.1954
+            ],
+            [
+              16.6007,
+              49.1954
+            ],
+            [
+              16.6007,
+              49.19515
+            ]
+          ]
+        ]
+      },
+      "geometry_note": "Syntetická geometrie pro ukázku ovládání. Není mapou skutečné parcely ani podkladem pro měření."
+    },
+    {
+      "id": "dvur",
+      "type": "area",
+      "label": "Dvůr D · model",
+      "cadastral_area": {
+        "code": "000000",
+        "name": "Fiktivní katastr pro model"
+      },
+      "source_ids": [],
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              16.5999,
+              49.19485
+            ],
+            [
+              16.60095,
+              49.19485
+            ],
+            [
+              16.60095,
+              49.19507
+            ],
+            [
+              16.5999,
+              49.19507
+            ],
+            [
+              16.5999,
+              49.19485
+            ]
+          ]
+        ]
+      },
+      "geometry_note": "Syntetická geometrie pro ukázku ovládání. Není mapou skutečné parcely ani podkladem pro měření."
+    },
+    {
+      "id": "byt",
+      "type": "unit",
+      "label": "Jednotka B-12 · model",
+      "cadastral_area": {
+        "code": "000000",
+        "name": "Fiktivní katastr pro model"
+      },
+      "source_ids": [],
+      "registry_id": "MODEL-B12"
+    }
+  ],
+  "sources": [],
+  "documents": [
+    {
+      "id": "podklad-byt",
+      "title": "Modelové podklady: byt a terasa",
+      "kind": "synthetic-teaching-document",
+      "sha256": "f72b9a1b076b4ee09c84d3d590f4ab8d3637896fb132b4e4a1275f22d69e3809",
+      "pages": 2,
+      "register_state_at": "",
+      "issued_at": "2026-11-02",
+      "imported_at": "2026-11-02T10:00:00+01:00",
+      "completeness": "unknown",
+      "seal_status": "not_checked",
+      "public": true
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-inzerat",
+      "document_id": "podklad-byt",
+      "locator": {
+        "page": 1,
+        "section": "1. Modelový text inzerátu",
+        "note": "Syntetický učební dokument; citace se nevztahuje k reálné nemovitosti."
+      },
+      "quote": "Byt B-12 má vlastní terasu T a sklep S. Přístup je zajištěn přes dvůr D.",
+      "observed_at": "2026-11-02",
+      "public": true
+    },
+    {
+      "id": "ev-terasa",
+      "document_id": "podklad-byt",
+      "locator": {
+        "page": 1,
+        "section": "2. Modelový výňatek z prohlášení",
+        "note": "Syntetický učební dokument; citace se nevztahuje k reálné nemovitosti."
+      },
+      "quote": "Terasa T je společnou částí domu vyhrazenou k výlučnému užívání vlastníku jednotky B-12.",
+      "observed_at": "2026-11-02",
+      "public": true
+    },
+    {
+      "id": "ev-podil",
+      "document_id": "podklad-byt",
+      "locator": {
+        "page": 1,
+        "section": "2. Modelový výňatek z prohlášení",
+        "note": "Syntetický učební dokument; citace se nevztahuje k reálné nemovitosti."
+      },
+      "quote": "Podíl jednotky B-12 na společných částech činí 745/10000.",
+      "observed_at": "2026-11-02",
+      "public": true
+    },
+    {
+      "id": "ev-neuplne",
+      "document_id": "podklad-byt",
+      "locator": {
+        "page": 2,
+        "section": "4. Modelový částečný výpis",
+        "note": "Syntetický učební dokument; citace se nevztahuje k reálné nemovitosti."
+      },
+      "quote": "V modelu byla dodána jen část B výpisu. Části B1, C a D nebyly dodány.",
+      "observed_at": "2026-11-02",
+      "public": true
+    }
+  ],
+  "findings": [
+    {
+      "id": "terasa-rozpor",
+      "title": "Terasa: tvrzení inzerátu vyžaduje opravu",
+      "topic": "rights",
+      "status": "conflict",
+      "severity": "high",
+      "summary": "Modelový inzerát mluví o vlastní terase. Výňatek ji popisuje jako společnou část s výlučným užíváním. Tyto formulace nemají stejný význam.",
+      "object_ids": [
+        "byt",
+        "terasa"
+      ],
+      "evidence_ids": [
+        "ev-inzerat",
+        "ev-terasa"
+      ],
+      "next_step": "Doložit úplné prohlášení a jeho změny; přesný režim převzít i do popisu předmětu koupě.",
+      "public": true
+    },
+    {
+      "id": "pravni-stav",
+      "title": "Úplný právní stav zůstává otevřený",
+      "topic": "rights",
+      "status": "missing",
+      "severity": "high",
+      "summary": "Dodaná část výpisu neobsahuje části B1, C a D. Žádný závěr o absenci právních omezení z ní nevzniká.",
+      "object_ids": [
+        "byt"
+      ],
+      "evidence_ids": [
+        "ev-neuplne"
+      ],
+      "next_step": "Získat správný úplný aktuální výpis pro jednotku a relevantní související objekty.",
+      "public": true
+    },
+    {
+      "id": "pristup",
+      "title": "Průjezd dvorem není doložen listinou",
+      "topic": "access",
+      "status": "missing",
+      "severity": "high",
+      "summary": "Schéma ukazuje prostor dvora a inzerát tvrdí přístup. Podklad pro rozsah oprávnění průjezdu chybí.",
+      "object_ids": [
+        "dvur",
+        "byt"
+      ],
+      "evidence_ids": [
+        "ev-inzerat"
+      ],
+      "next_step": "Vyžádat podklad ke konkrétnímu tvrzenému oprávnění a případný geometrický plán.",
+      "public": true
+    },
+    {
+      "id": "spolecne-casti",
+      "title": "Podíl na společných částech je uveden zvlášť",
+      "topic": "rights",
+      "status": "supported",
+      "severity": "info",
+      "summary": "Modelový výňatek uvádí přesný podíl 745/10000. Nejde o podíl osoby na vlastnictví jednotky; ten by vyžadoval samostatný údaj.",
+      "object_ids": [
+        "byt",
+        "dum"
+      ],
+      "evidence_ids": [
+        "ev-podil"
+      ],
+      "next_step": "",
+      "public": true
+    },
+    {
+      "id": "sklep",
+      "title": "Vymezení sklepa je potřeba doplnit",
+      "topic": "rights",
+      "status": "unverified",
+      "severity": "medium",
+      "summary": "Modelové podklady nevymezují, zda sklep tvoří součást jednotky, společnou část, nebo samostatný objekt.",
+      "object_ids": [
+        "byt"
+      ],
+      "evidence_ids": [],
+      "next_step": "Doplnit příslušné vymezení a půdorys z úplného prohlášení vlastníka.",
+      "public": true
+    },
+    {
+      "id": "energie",
+      "title": "Energetický průkaz nebyl dodán",
+      "topic": "energy",
+      "status": "missing",
+      "severity": "info",
+      "summary": "Bez odpovídajícího PENB nelze z těchto podkladů uvést energetickou třídu.",
+      "object_ids": [
+        "dum"
+      ],
+      "evidence_ids": [],
+      "next_step": "Vyžádat průkaz odpovídající budově a aktuálnímu stavu.",
+      "public": true
+    }
+  ],
+  "rights": [
+    {
+      "id": "podil-spolecne",
+      "type": "Podíl jednotky na společných částech (model)",
+      "beneficiary_object_ids": [
+        "byt"
+      ],
+      "burdened_object_ids": [],
+      "share": {
+        "numerator": 745,
+        "denominator": 10000
+      },
+      "description": "Modelová vazba podílu jednotky; nejde o zjištění o reálném vlastníkovi.",
+      "evidence_ids": [
+        "ev-podil"
+      ],
+      "public": true
+    }
+  ],
+  "next_documents": [
+    {
+      "id": "req-prohlaseni",
+      "title": "Úplné prohlášení vlastníka",
+      "reason": "Rozhodne vymezení terasy, sklepa a společných částí.",
+      "source_url": "https://dpn.cuzk.gov.cz/",
+      "for_finding": "terasa-rozpor",
+      "priority": "high",
+      "status": "needed",
+      "public": true
+    },
+    {
+      "id": "req-lv",
+      "title": "Úplný aktuální výpis",
+      "reason": "Doplní neviděné části a správný časový stav.",
+      "source_url": "https://dpn.cuzk.gov.cz/",
+      "for_finding": "pravni-stav",
+      "priority": "high",
+      "status": "needed",
+      "public": true
+    },
+    {
+      "id": "req-pristup",
+      "title": "Podklad k právu průjezdu",
+      "reason": "Vymezí oprávněné a zatížené objekty a rozsah užívání.",
+      "source_url": "https://dpn.cuzk.gov.cz/",
+      "for_finding": "pristup",
+      "priority": "high",
+      "status": "needed",
+      "public": true
+    }
+  ],
+  "research_log": []
+}

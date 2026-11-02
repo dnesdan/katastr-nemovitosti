@@ -1,0 +1,328 @@
+{
+  "schema_version": "property-case/1.0",
+  "case": {
+    "id": "uhersky-brod-verejna-data",
+    "title": "Uherský Brod · parcela 1",
+    "purpose": "Ukázka dohledání skutečné identity a mapové geometrie z veřejných služeb",
+    "locality": "Uherský Brod",
+    "region": "Zlínský kraj",
+    "created_at": "2026-11-02T11:39:13Z",
+    "as_of": "2026-11-02",
+    "mode": "research",
+    "summary": "Veřejné služby ČÚZK potvrdily parcelu 1 v katastrálním území Uherský Brod (772984) a vrátily její polygon. Právní stav, územní plán, právní přístup a povodňové souvislosti tento příklad neprověřoval.",
+    "scope_note": "Skutečný malý dotaz do RÚIAN, WFS a WMS dne 2. 11. 2026. Příklad slouží k ověření identifikace a mapového výstupu. Neobsahuje vlastníky, LV, soukromé listiny ani posouzení vhodnosti koupě nebo stavby. Čas stažení není datem měření hranic.",
+    "sharing": "public-reviewed"
+  },
+  "objects": [
+    {
+      "id": "obj-parcela-1",
+      "type": "parcel",
+      "label": "Parcela 1 · k.ú. Uherský Brod",
+      "cadastral_area": {
+        "code": "772984",
+        "name": "Uherský Brod"
+      },
+      "parcel": {
+        "number": "1",
+        "series": "land"
+      },
+      "registry_id": "CP.2793846742",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              17.643049,
+              49.027467
+            ],
+            [
+              17.64308,
+              49.02746
+            ],
+            [
+              17.643085,
+              49.027459
+            ],
+            [
+              17.643431,
+              49.02738
+            ],
+            [
+              17.643436,
+              49.02739
+            ],
+            [
+              17.643442,
+              49.027417
+            ],
+            [
+              17.643485,
+              49.027595
+            ],
+            [
+              17.643495,
+              49.027656
+            ],
+            [
+              17.643164,
+              49.027686
+            ],
+            [
+              17.643049,
+              49.027467
+            ]
+          ]
+        ]
+      },
+      "geometry_note": "Skutečný polygon z INSPIRE WFS ČÚZK, prvek CP.2793846742. Deklarované osy EPSG:4326 převedeny do GeoJSON [délka, šířka]. Přesnost hranic není tímto dotazem stanovena; zobrazení nenahrazuje vytyčení. Zdroj © ČÚZK.",
+      "source_ids": [
+        "src-ruian-ku",
+        "src-wfs-parcela",
+        "src-wms-map"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-ruian-ku",
+      "title": "RÚIAN · katastrální území Uherský Brod",
+      "url": "https://ags.cuzk.gov.cz/arcgis/rest/services/RUIAN/MapServer/7/query?f=json&where=UPPER%28nazev%29+LIKE+%27%25UHERSK%C3%9D+BROD%25%27&outFields=%2A&outSR=4326&returnGeometry=false&returnCentroid=true&orderByFields=nazev+ASC%2Ckod+ASC&resultRecordCount=4",
+      "provider": "Český úřad zeměměřický a katastrální",
+      "accessed_at": "2026-11-02T11:34:00+00:00",
+      "data_date": "",
+      "scope": "Jeden kandidát katastrálního území podle doslovného názvu; nejde o právní data.",
+      "access": "public",
+      "public": true
+    },
+    {
+      "id": "src-wfs-parcela",
+      "title": "INSPIRE WFS · parcela 1 v k.ú. 772984",
+      "url": "https://services.cuzk.gov.cz/wfs/inspire-CP-wfs.asp?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&STOREDQUERY_ID=GetParcel&UPPER_ZONING_ID=772984&TEXT=1&SRSNAME=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F4326&COUNT=2",
+      "provider": "Český úřad zeměměřický a katastrální",
+      "accessed_at": "2026-11-02T11:34:55+00:00",
+      "data_date": "",
+      "scope": "Jeden přesný dotaz GetParcel: identifikátor, popisek, deklarovaná výměra a geometrie. Bez vlastníků a omezení práv.",
+      "access": "public",
+      "public": true
+    },
+    {
+      "id": "src-wms-map",
+      "title": "Katastrální mapa · jednotlivý výřez WMS",
+      "url": "https://services.cuzk.gov.cz/wms/local-km-wms.asp?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=KN&STYLES=&BBOX=49.02708%2C17.642749%2C49.027986%2C17.643795&WIDTH=800&HEIGHT=600&FORMAT=image%2Fpng&TRANSPARENT=FALSE&CRS=EPSG%3A4326",
+      "provider": "Český úřad zeměměřický a katastrální",
+      "accessed_at": "2026-11-02T11:36:43+00:00",
+      "data_date": "",
+      "scope": "Vrstva KN, WMS 1.3.0, EPSG:4326, obraz 800 × 600 pixelů. Datum stažení nevyjadřuje datum měření hranice.",
+      "access": "public",
+      "public": true
+    }
+  ],
+  "documents": [],
+  "evidence": [
+    {
+      "id": "ev-ku",
+      "source_id": "src-ruian-ku",
+      "locator": {
+        "section": "JSON features[0].attributes",
+        "note": "Pole kod a nazev; SHA256 odpovědi 46e492ff408fe3d97dc19bdef5ccff082085c251e7ea73e44a438d1dbbebaf94"
+      },
+      "quote": "kod: 772984; nazev: Uherský Brod",
+      "observed_at": "2026-11-02T11:34:00+00:00",
+      "public": true
+    },
+    {
+      "id": "ev-identita",
+      "source_id": "src-wfs-parcela",
+      "locator": {
+        "section": "wfs:member/cp:CadastralParcel[@gml:id=\"CP.2793846742\"]",
+        "note": "cp:label a cp:nationalCadastralReference; SHA256 odpovědi 69937026b144d80eefd77ce4032266f73bdb88b1de5f0a802d96199a35fadfe6"
+      },
+      "quote": "label: 1; nationalCadastralReference: 772984-1",
+      "observed_at": "2026-11-02T11:34:55+00:00",
+      "public": true
+    },
+    {
+      "id": "ev-geometrie",
+      "source_id": "src-wfs-parcela",
+      "locator": {
+        "section": "CP.2793846742 / cp:geometry",
+        "note": "Polygon s uzavřeným vnějším prstencem, převod pořadí os EPSG:4326 do GeoJSON. Hash původní odpovědi je uveden u identifikace."
+      },
+      "quote": "",
+      "observed_at": "2026-11-02T11:34:55+00:00",
+      "public": true
+    },
+    {
+      "id": "ev-mapa",
+      "source_id": "src-wms-map",
+      "locator": {
+        "section": "Vrstva KN, výřez mapy",
+        "bbox": [
+          17.642749000000002,
+          49.02708,
+          17.643795,
+          49.027986000000006
+        ],
+        "note": "Vizuálně zkontrolovaný výřez obsahuje popisek parcely 1. Bbox je zde délka, šířka; SHA256 obrazu 309c3752862b61c44cdc266126f57dadbe1fbd390e3773f4a9af83c9e651d86d"
+      },
+      "quote": "",
+      "observed_at": "2026-11-02T11:36:43+00:00",
+      "public": true
+    },
+    {
+      "id": "ev-vymera",
+      "source_id": "src-wfs-parcela",
+      "locator": {
+        "section": "CP.2793846742 / cp:areaValue",
+        "note": "Hodnota a jednotka převzaty přímo z odpovědi, nikoli spočteny z obrázku či WGS84 polygonu."
+      },
+      "quote": "765; uom: m2",
+      "observed_at": "2026-11-02T11:34:55+00:00",
+      "public": true
+    }
+  ],
+  "findings": [
+    {
+      "id": "f-identita",
+      "title": "Parcela je jednoznačně identifikovaná",
+      "topic": "Identita",
+      "status": "supported",
+      "severity": "info",
+      "summary": "RÚIAN uvádí katastrální území Uherský Brod pod kódem 772984. Přesný WFS dotaz na pozemkovou parcelu 1 vrátil jediný prvek CP.2793846742 s referencí 772984-1.",
+      "object_ids": [
+        "obj-parcela-1"
+      ],
+      "evidence_ids": [
+        "ev-ku",
+        "ev-identita"
+      ],
+      "next_step": "",
+      "public": true
+    },
+    {
+      "id": "f-geometrie",
+      "title": "Mapa zobrazuje skutečný vrácený polygon",
+      "topic": "Mapa",
+      "status": "supported",
+      "severity": "info",
+      "summary": "Geometrie v reportu pochází z odpovědi WFS. Samostatně získaný a prohlédnutý WMS výřez obsahuje označení parcely 1. Žádná okolní vlastnická či přístupová práva z mapy nevyvozujeme.",
+      "object_ids": [
+        "obj-parcela-1"
+      ],
+      "evidence_ids": [
+        "ev-geometrie",
+        "ev-mapa"
+      ],
+      "next_step": "",
+      "public": true
+    },
+    {
+      "id": "f-vymera",
+      "title": "WFS uvádí výměru 765 m²",
+      "topic": "Mapa",
+      "status": "supported",
+      "severity": "info",
+      "summary": "Hodnota 765 m² je deklarovaný atribut cp:areaValue v této odpovědi WFS. Není výsledkem plošného měření v reportu ani náhradou úplného LV.",
+      "object_ids": [
+        "obj-parcela-1"
+      ],
+      "evidence_ids": [
+        "ev-vymera"
+      ],
+      "next_step": "",
+      "public": true
+    },
+    {
+      "id": "f-lv",
+      "title": "Pro právní stav chybí list vlastnictví",
+      "topic": "Právní stav",
+      "status": "missing",
+      "severity": "high",
+      "summary": "Tento příklad nezískával LV ani listiny. Vlastníci, podíly, omezení a případná řízení proto nejsou vyhodnoceny.",
+      "object_ids": [
+        "obj-parcela-1"
+      ],
+      "evidence_ids": [],
+      "next_step": "Získat úplný aktuální LV pro identifikovanou parcelu; následně určit relevantní listiny.",
+      "public": true
+    },
+    {
+      "id": "f-plan",
+      "title": "Územní plán nebyl prověřen",
+      "topic": "Územní plán",
+      "status": "unverified",
+      "severity": "medium",
+      "summary": "Nebyl dohledán účinný územní plán ani jeho regulativy pro tento polygon. Z absence kontroly neplyne žádný závěr o stavební možnosti.",
+      "object_ids": [
+        "obj-parcela-1"
+      ],
+      "evidence_ids": [],
+      "next_step": "Dohledat platný plán města, účinné změny, legendu a text pro dotčenou plochu.",
+      "public": true
+    },
+    {
+      "id": "f-pristup",
+      "title": "Právní přístup zůstává otevřený",
+      "topic": "Přístup",
+      "status": "unverified",
+      "severity": "medium",
+      "summary": "Mapový výřez nebyl doplněn podklady k právu přístupu. Viditelné linie v mapě samy tuto otázku neuzavírají.",
+      "object_ids": [
+        "obj-parcela-1"
+      ],
+      "evidence_ids": [],
+      "next_step": "Určit zamýšlenou přístupovou trasu a podle LV a dalších příslušných podkladů prověřit oprávnění k jejímu užívání.",
+      "public": true
+    },
+    {
+      "id": "f-voda",
+      "title": "Povodňové souvislosti nebyly kontrolovány",
+      "topic": "Voda",
+      "status": "unverified",
+      "severity": "medium",
+      "summary": "Žádná povodňová vrstva ani příslušný dokument nebyly pro tuto parcelu vyhodnoceny. Výsledek je neověřeno, nikoli mimo záplavové území.",
+      "object_ids": [
+        "obj-parcela-1"
+      ],
+      "evidence_ids": [],
+      "next_step": "Porovnat celý polygon s aktuálním oficiálním podkladem záplavových území a ověřit jeho rozsah a datum.",
+      "public": true
+    }
+  ],
+  "rights": [],
+  "next_documents": [
+    {
+      "id": "doc-request-lv",
+      "title": "Úplný aktuální list vlastnictví",
+      "reason": "Doplnit právní stav parcely 1 v k.ú. Uherský Brod 772984. Číslo LV se nesmí odhadovat z tohoto WFS dotazu.",
+      "source_url": "https://dpn.cuzk.gov.cz/",
+      "for_finding": "f-lv",
+      "priority": "high",
+      "status": "needed",
+      "public": true
+    }
+  ],
+  "research_log": [
+    {
+      "at": "2026-11-02T11:34:00+00:00",
+      "source_id": "src-ruian-ku",
+      "query": "RÚIAN, kind=cadastral, doslovný název Uherský Brod, limit=3",
+      "status": "ok",
+      "note": "Jeden kandidát, kód 772984. Žádný vlastník se nevyhledával."
+    },
+    {
+      "at": "2026-11-02T11:34:55+00:00",
+      "source_id": "src-wfs-parcela",
+      "query": "WFS GetParcel: UPPER_ZONING_ID=772984, TEXT=1, COUNT=2, EPSG:4326",
+      "status": "ok",
+      "note": "Jeden prvek, identity odpovídají dotazu, polygon zpracován. Nejde o LV."
+    },
+    {
+      "at": "2026-11-02T11:36:43+00:00",
+      "source_id": "src-wms-map",
+      "query": "WMS KN, bbox kolem vráceného polygonu, 800×600",
+      "status": "ok",
+      "note": "PNG staženo, rozměry ověřeny a obraz vizuálně prohlédnut; není součástí tohoto JSON jako binární příloha."
+    }
+  ]
+}

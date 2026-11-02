@@ -1,0 +1,73 @@
+{
+  "checked_on": "2026-11-02",
+  "scope": "Šest malých veřejných čtecích dotazů. Ověřuje živé adaptéry a zpracování odpovědi; nejde o úplnou prověrku nemovitosti.",
+  "checks": [
+    {
+      "id": "ruian-katastr",
+      "result": "passed",
+      "invocation": "sources.ruian(client, 'Uherský Brod', kind='cadastral', limit=3)",
+      "request_url": "https://ags.cuzk.gov.cz/arcgis/rest/services/RUIAN/MapServer/7/query?f=json&where=UPPER%28nazev%29+LIKE+%27%25UHERSK%C3%9D+BROD%25%27&outFields=%2A&outSR=4326&returnGeometry=false&returnCentroid=true&orderByFields=nazev+ASC%2Ckod+ASC&resultRecordCount=4",
+      "response_url": "https://ags.cuzk.gov.cz/arcgis/rest/services/RUIAN/MapServer/7/query?f=json&where=UPPER%28nazev%29+LIKE+%27%25UHERSK%C3%9D+BROD%25%27&outFields=%2A&outSR=4326&returnGeometry=false&returnCentroid=true&orderByFields=nazev+ASC%2Ckod+ASC&resultRecordCount=4",
+      "retrieved_at": "2026-11-02T11:34:00+00:00",
+      "response_sha256": "46e492ff408fe3d97dc19bdef5ccff082085c251e7ea73e44a438d1dbbebaf94",
+      "observation": "Jeden kandidát; k.ú. 772984."
+    },
+    {
+      "id": "ruian-address",
+      "result": "passed",
+      "invocation": "sources.ruian(client, 'Dominikánské náměstí 196/1', limit=2)",
+      "request_url": "https://ags.cuzk.gov.cz/arcgis/rest/services/RUIAN/MapServer/1/query?f=json&where=UPPER%28adresa%29+LIKE+%27%25DOMINIK%C3%81NSK%C3%89+N%C3%81M%C4%9AST%C3%8D+196%2F1%25%27&outFields=%2A&outSR=4326&returnGeometry=true&returnCentroid=false&orderByFields=adresa+ASC%2Ckod+ASC&resultRecordCount=3",
+      "response_url": "https://ags.cuzk.gov.cz/arcgis/rest/services/RUIAN/MapServer/1/query?f=json&where=UPPER%28adresa%29+LIKE+%27%25DOMINIK%C3%81NSK%C3%89+N%C3%81M%C4%9AST%C3%8D+196%2F1%25%27&outFields=%2A&outSR=4326&returnGeometry=true&returnCentroid=false&orderByFields=adresa+ASC%2Ckod+ASC&resultRecordCount=3",
+      "retrieved_at": "2026-11-02T11:34:53+00:00",
+      "response_sha256": "e1ebd073181fc7fc3ca7d9c946df4980af0f6a18126605d9b509bb447df5ca78",
+      "observation": "Jedna adresa 19095597; navazuje stavební objekt 18945341."
+    },
+    {
+      "id": "ruian-building",
+      "result": "passed",
+      "invocation": "sources.ruian_building(client, '18945341')",
+      "request_url": "https://ags.cuzk.gov.cz/arcgis/rest/services/RUIAN/MapServer/3/query?f=geojson&where=kod+%3D+18945341&outFields=%2A&outSR=4326&returnGeometry=true&resultRecordCount=2",
+      "response_url": "https://ags.cuzk.gov.cz/arcgis/rest/services/RUIAN/MapServer/3/query?f=geojson&where=kod+%3D+18945341&outFields=%2A&outSR=4326&returnGeometry=true&resultRecordCount=2",
+      "retrieved_at": "2026-11-02T11:36:37+00:00",
+      "response_sha256": "e70f8d9837640e6627e8f9be415032d88af453ff089a7cb04396cd119ceb4dac",
+      "observation": "Správný kód budovy; skutečná GeoJSON geometrie MultiPolygon."
+    },
+    {
+      "id": "parcel-brod",
+      "result": "passed",
+      "invocation": "sources.parcel(client, '772984', '1', series='land')",
+      "request_url": "https://services.cuzk.gov.cz/wfs/inspire-CP-wfs.asp?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&STOREDQUERY_ID=GetParcel&UPPER_ZONING_ID=772984&TEXT=1&SRSNAME=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F4326&COUNT=2",
+      "response_url": "https://services.cuzk.gov.cz/wfs/inspire-CP-wfs.asp?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&STOREDQUERY_ID=GetParcel&UPPER_ZONING_ID=772984&TEXT=1&SRSNAME=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F4326&COUNT=2",
+      "retrieved_at": "2026-11-02T11:34:55+00:00",
+      "response_sha256": "69937026b144d80eefd77ce4032266f73bdb88b1de5f0a802d96199a35fadfe6",
+      "observation": "Jeden prvek CP.2793846742, reference 772984-1, polygon se správným pořadím os."
+    },
+    {
+      "id": "km-wms",
+      "result": "passed",
+      "invocation": "sources.wms(client, sources.CADASTRAL_WMS_URL, version='1.3.0')",
+      "request_url": "https://services.cuzk.gov.cz/wms/local-km-wms.asp?SERVICE=WMS&REQUEST=GetCapabilities&VERSION=1.3.0",
+      "response_url": "https://services.cuzk.gov.cz/wms/local-km-wms.asp?SERVICE=WMS&REQUEST=GetCapabilities&VERSION=1.3.0",
+      "retrieved_at": "2026-11-02T11:34:01+00:00",
+      "response_sha256": "bcdfe22b8ce2b21dcb9b347bc28a105b2dec2f20a0f4e89b4c1c225705608c9a",
+      "observation": "Capabilities verze 1.3.0; vrstva KN inzeruje EPSG:4326."
+    },
+    {
+      "id": "brod-parcel-map.png",
+      "result": "passed",
+      "invocation": "sources.wms_map(client, sources.CADASTRAL_WMS_URL, 'KN', [17.642749000000002, 49.02708, 17.643795, 49.027986000000006], 'map.png', width=800, height=600, version='1.3.0')",
+      "request_url": "https://services.cuzk.gov.cz/wms/local-km-wms.asp?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=KN&STYLES=&BBOX=49.02708%2C17.642749%2C49.027986%2C17.643795&WIDTH=800&HEIGHT=600&FORMAT=image%2Fpng&TRANSPARENT=FALSE&CRS=EPSG%3A4326",
+      "response_url": "https://services.cuzk.gov.cz/wms/local-km-wms.asp?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=KN&STYLES=&BBOX=49.02708%2C17.642749%2C49.027986%2C17.643795&WIDTH=800&HEIGHT=600&FORMAT=image%2Fpng&TRANSPARENT=FALSE&CRS=EPSG%3A4326",
+      "retrieved_at": "2026-11-02T11:36:43+00:00",
+      "response_sha256": "309c3752862b61c44cdc266126f57dadbe1fbd390e3773f4a9af83c9e651d86d",
+      "observation": "PNG 800×600, 13120 B; obraz byl vizuálně zkontrolován."
+    }
+  ],
+  "not_tested": [
+    "Autentizované API KN a WSDP",
+    "Přihlášení a placené výstupy DPN",
+    "Vlastnická práva a aktuálnost LV",
+    "Územní plán, právní přístup a povodňový průnik příkladové parcely"
+  ],
+  "reproduction": "Z adresáře skillu přidat scripts do PYTHONPATH, vytvořit HttpClient s pracovním cache_dir a spustit uvedená volání. Časy a hashe se při novém získání mohou změnit. Respektovat prodlevy a podmínky zdrojů."
+}

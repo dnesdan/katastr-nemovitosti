@@ -1,0 +1,926 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/dnesdan/katastr-nemovitosti/property-case-1.0.schema.json",
+  "title": "Katastr a souvislosti — property-case/1.0",
+  "description": "Structural validation for a cited Czech property case. Runtime case_model.py adds cross-reference integrity, unique identities, valid calendar dates, finite numbers, ring closure and share constraints.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "property-case/1.0"
+    },
+    "case": {
+      "$ref": "#/$defs/case"
+    },
+    "objects": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/object"
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/document"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/finding"
+      }
+    },
+    "rights": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/right"
+      }
+    },
+    "next_documents": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/next_document"
+      }
+    },
+    "research_log": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/log_entry"
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "case",
+    "objects",
+    "sources",
+    "documents",
+    "evidence",
+    "findings",
+    "rights",
+    "next_documents",
+    "research_log"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "text": {
+      "type": "string"
+    },
+    "nonempty": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}(?:T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,6})?(?:Z|[+-]\\d{2}:\\d{2}))?$",
+      "$comment": "Runtime validates calendar dates. Datetimes must include an offset."
+    },
+    "optional_date": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/date"
+        },
+        {
+          "const": ""
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "url": {
+      "type": "string",
+      "pattern": "^[Hh][Tt][Tt][Pp][Ss]?://[^\\s<>\"\\\\\\u0000-\\u0020\\u007f]+$",
+      "$comment": "Runtime also checks authority, credential absence and port syntax."
+    },
+    "refs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/id"
+      },
+      "uniqueItems": true
+    },
+    "position": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180
+        },
+        {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "line": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/position"
+      },
+      "minItems": 2
+    },
+    "ring": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/position"
+      },
+      "minItems": 4
+    },
+    "polygon": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ring"
+      },
+      "minItems": 1
+    },
+    "geometry": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "Point"
+            },
+            "coordinates": {
+              "$ref": "#/$defs/position"
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "MultiPoint"
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/position"
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "LineString"
+            },
+            "coordinates": {
+              "$ref": "#/$defs/line"
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "MultiLineString"
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/line"
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "Polygon"
+            },
+            "coordinates": {
+              "$ref": "#/$defs/polygon"
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "MultiPolygon"
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/polygon"
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ],
+          "additionalProperties": false
+        }
+      ],
+      "$comment": "Runtime additionally verifies polygon closure and finite coordinates."
+    },
+    "cadastral_area": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "pattern": "^[0-9]{6}$"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "parcel": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*(?:/[1-9][0-9]*)?$"
+        },
+        "series": {
+          "enum": [
+            "land",
+            "building"
+          ]
+        }
+      },
+      "required": [
+        "number",
+        "series"
+      ],
+      "additionalProperties": false
+    },
+    "case": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "$ref": "#/$defs/nonempty"
+        },
+        "purpose": {
+          "$ref": "#/$defs/nonempty"
+        },
+        "locality": {
+          "$ref": "#/$defs/nonempty"
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "region": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "scope_note": {
+          "type": "string"
+        },
+        "created_at": {
+          "$ref": "#/$defs/date"
+        },
+        "as_of": {
+          "$ref": "#/$defs/date"
+        },
+        "mode": {
+          "enum": [
+            "synthetic",
+            "research"
+          ]
+        },
+        "sharing": {
+          "enum": [
+            "private",
+            "public-reviewed"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "purpose",
+        "locality",
+        "created_at",
+        "as_of",
+        "mode",
+        "sharing"
+      ],
+      "additionalProperties": false
+    },
+    "object": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "type": {
+          "enum": [
+            "parcel",
+            "building",
+            "unit",
+            "address",
+            "area"
+          ]
+        },
+        "label": {
+          "$ref": "#/$defs/nonempty"
+        },
+        "cadastral_area": {
+          "$ref": "#/$defs/cadastral_area"
+        },
+        "parcel": {
+          "$ref": "#/$defs/parcel"
+        },
+        "registry_id": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "geometry_note": {
+          "type": "string"
+        },
+        "source_ids": {
+          "$ref": "#/$defs/refs"
+        },
+        "geometry": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/geometry"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "label"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "parcel"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "parcel",
+              "cadastral_area"
+            ],
+            "properties": {
+              "cadastral_area": {
+                "required": [
+                  "code"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "geometry"
+            ],
+            "properties": {
+              "geometry": {
+                "type": "object"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "geometry_note"
+            ],
+            "properties": {
+              "geometry_note": {
+                "$ref": "#/$defs/nonempty"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "$ref": "#/$defs/nonempty"
+        },
+        "provider": {
+          "$ref": "#/$defs/nonempty"
+        },
+        "scope": {
+          "$ref": "#/$defs/nonempty"
+        },
+        "url": {
+          "$ref": "#/$defs/url"
+        },
+        "accessed_at": {
+          "$ref": "#/$defs/date"
+        },
+        "data_date": {
+          "$ref": "#/$defs/optional_date"
+        },
+        "access": {
+          "enum": [
+            "public",
+            "user_document"
+          ]
+        },
+        "public": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "provider",
+        "scope",
+        "access",
+        "accessed_at"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "access": {
+                "const": "public"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "url"
+            ]
+          }
+        }
+      ]
+    },
+    "document": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "$ref": "#/$defs/nonempty"
+        },
+        "kind": {
+          "$ref": "#/$defs/nonempty"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "pages": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "register_state_at": {
+          "$ref": "#/$defs/optional_date"
+        },
+        "issued_at": {
+          "$ref": "#/$defs/optional_date"
+        },
+        "imported_at": {
+          "$ref": "#/$defs/optional_date"
+        },
+        "completeness": {
+          "enum": [
+            "complete",
+            "partial",
+            "unknown"
+          ]
+        },
+        "seal_status": {
+          "enum": [
+            "not_checked",
+            "present_unverified",
+            "verified",
+            "invalid"
+          ]
+        },
+        "public": {
+          "type": "boolean"
+        },
+        "inspection": {
+          "type": "object",
+          "$comment": "Private extraction metadata; always removed from public_case exports."
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "kind",
+        "sha256",
+        "pages",
+        "completeness",
+        "seal_status"
+      ],
+      "additionalProperties": false
+    },
+    "locator": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "section": {
+          "type": "string"
+        },
+        "attachment": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "bbox": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        }
+      },
+      "required": [],
+      "additionalProperties": false,
+      "anyOf": [
+        {
+          "required": [
+            "page"
+          ]
+        },
+        {
+          "required": [
+            "section"
+          ],
+          "properties": {
+            "section": {
+              "$ref": "#/$defs/nonempty"
+            }
+          }
+        },
+        {
+          "required": [
+            "attachment"
+          ],
+          "properties": {
+            "attachment": {
+              "$ref": "#/$defs/nonempty"
+            }
+          }
+        },
+        {
+          "required": [
+            "note"
+          ],
+          "properties": {
+            "note": {
+              "$ref": "#/$defs/nonempty"
+            }
+          }
+        }
+      ]
+    },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "source_id": {
+          "$ref": "#/$defs/id"
+        },
+        "document_id": {
+          "$ref": "#/$defs/id"
+        },
+        "locator": {
+          "$ref": "#/$defs/locator"
+        },
+        "quote": {
+          "type": "string"
+        },
+        "observed_at": {
+          "$ref": "#/$defs/optional_date"
+        },
+        "public": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "locator"
+      ],
+      "additionalProperties": false,
+      "oneOf": [
+        {
+          "required": [
+            "source_id"
+          ],
+          "not": {
+            "required": [
+              "document_id"
+            ]
+          }
+        },
+        {
+          "required": [
+            "document_id"
+          ],
+          "not": {
+            "required": [
+              "source_id"
+            ]
+          }
+        }
+      ]
+    },
+    "finding": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "$ref": "#/$defs/nonempty"
+        },
+        "topic": {
+          "$ref": "#/$defs/nonempty"
+        },
+        "summary": {
+          "$ref": "#/$defs/nonempty"
+        },
+        "status": {
+          "enum": [
+            "supported",
+            "conflict",
+            "missing",
+            "not_covered",
+            "unverified"
+          ]
+        },
+        "severity": {
+          "enum": [
+            "high",
+            "medium",
+            "info"
+          ]
+        },
+        "object_ids": {
+          "$ref": "#/$defs/refs"
+        },
+        "evidence_ids": {
+          "$ref": "#/$defs/refs"
+        },
+        "next_step": {
+          "type": "string"
+        },
+        "public": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "topic",
+        "summary",
+        "status",
+        "severity"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "supported",
+                  "conflict"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "evidence_ids"
+            ],
+            "properties": {
+              "evidence_ids": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "share": {
+      "type": "object",
+      "properties": {
+        "numerator": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "denominator": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "numerator",
+        "denominator"
+      ],
+      "additionalProperties": false,
+      "$comment": "Runtime checks numerator <= denominator; values remain exact integers."
+    },
+    "right": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "type": {
+          "$ref": "#/$defs/nonempty"
+        },
+        "description": {
+          "$ref": "#/$defs/nonempty"
+        },
+        "beneficiary_object_ids": {
+          "$ref": "#/$defs/refs"
+        },
+        "burdened_object_ids": {
+          "$ref": "#/$defs/refs"
+        },
+        "share": {
+          "$ref": "#/$defs/share"
+        },
+        "evidence_ids": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/refs"
+            },
+            {
+              "minItems": 1
+            }
+          ]
+        },
+        "public": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "description",
+        "evidence_ids"
+      ],
+      "additionalProperties": false
+    },
+    "next_document": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "$ref": "#/$defs/nonempty"
+        },
+        "reason": {
+          "$ref": "#/$defs/nonempty"
+        },
+        "source_url": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/url"
+            },
+            {
+              "const": ""
+            }
+          ]
+        },
+        "for_finding": {
+          "$ref": "#/$defs/id"
+        },
+        "priority": {
+          "enum": [
+            "high",
+            "medium",
+            "info"
+          ]
+        },
+        "status": {
+          "enum": [
+            "needed",
+            "received"
+          ]
+        },
+        "public": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "reason",
+        "for_finding",
+        "priority",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "log_entry": {
+      "type": "object",
+      "properties": {
+        "at": {
+          "$ref": "#/$defs/date"
+        },
+        "source_id": {
+          "$ref": "#/$defs/id"
+        },
+        "query": {
+          "$ref": "#/$defs/nonempty"
+        },
+        "status": {
+          "enum": [
+            "ok",
+            "empty",
+            "blocked",
+            "error",
+            "planned"
+          ]
+        },
+        "note": {
+          "$ref": "#/$defs/nonempty"
+        }
+      },
+      "required": [
+        "at",
+        "query",
+        "status",
+        "note"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

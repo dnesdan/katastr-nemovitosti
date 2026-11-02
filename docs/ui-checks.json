@@ -1,0 +1,48 @@
+{
+  "scope": "Local file HTML only; no external page visited",
+  "examples": [
+    {
+      "file": "brno-byt-model.html",
+      "desktop_width": 1440,
+      "mobile_width": 390,
+      "horizontal_overflow": false,
+      "missing_anchors": [],
+      "javascript_errors": [],
+      "external_requests": 0,
+      "findings": 6,
+      "pdf_pages": 5,
+      "printed_all_findings": true,
+      "printed_all_evidence_quotes": true,
+      "print_restored_filter": true
+    },
+    {
+      "file": "uhersky-brod-verejna-data.html",
+      "desktop_width": 1440,
+      "mobile_width": 390,
+      "horizontal_overflow": false,
+      "missing_anchors": [],
+      "javascript_errors": [],
+      "external_requests": 0,
+      "findings": 7,
+      "pdf_pages": 5,
+      "printed_all_findings": true,
+      "printed_all_evidence_quotes": true,
+      "print_restored_filter": true
+    },
+    {
+      "file": "vysocina-pozemek-model.html",
+      "desktop_width": 1440,
+      "mobile_width": 390,
+      "horizontal_overflow": false,
+      "missing_anchors": [],
+      "javascript_errors": [],
+      "external_requests": 0,
+      "findings": 5,
+      "pdf_pages": 4,
+      "printed_all_findings": true,
+      "printed_all_evidence_quotes": true,
+      "print_restored_filter": true
+    }
+  ],
+  "browser": "136.0.7103.25"
+}

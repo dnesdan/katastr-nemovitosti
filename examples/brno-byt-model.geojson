@@ -1,0 +1,138 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "dum",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              16.6001,
+              49.1951
+            ],
+            [
+              16.6007,
+              49.1951
+            ],
+            [
+              16.6007,
+              49.1955
+            ],
+            [
+              16.6001,
+              49.1955
+            ],
+            [
+              16.6001,
+              49.1951
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "dum",
+        "label": "Modelový dům A",
+        "type": "building",
+        "geometry_note": "Syntetická geometrie pro ukázku ovládání. Není mapou skutečné parcely ani podkladem pro měření.",
+        "source_ids": [],
+        "cadastral_area": {
+          "code": "000000",
+          "name": "Fiktivní katastr pro model"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "terasa",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              16.6007,
+              49.19515
+            ],
+            [
+              16.60092,
+              49.19515
+            ],
+            [
+              16.60092,
+              49.1954
+            ],
+            [
+              16.6007,
+              49.1954
+            ],
+            [
+              16.6007,
+              49.19515
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "terasa",
+        "label": "Terasa T · model",
+        "type": "area",
+        "geometry_note": "Syntetická geometrie pro ukázku ovládání. Není mapou skutečné parcely ani podkladem pro měření.",
+        "source_ids": [],
+        "cadastral_area": {
+          "code": "000000",
+          "name": "Fiktivní katastr pro model"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "dvur",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              16.5999,
+              49.19485
+            ],
+            [
+              16.60095,
+              49.19485
+            ],
+            [
+              16.60095,
+              49.19507
+            ],
+            [
+              16.5999,
+              49.19507
+            ],
+            [
+              16.5999,
+              49.19485
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "dvur",
+        "label": "Dvůr D · model",
+        "type": "area",
+        "geometry_note": "Syntetická geometrie pro ukázku ovládání. Není mapou skutečné parcely ani podkladem pro měření.",
+        "source_ids": [],
+        "cadastral_area": {
+          "code": "000000",
+          "name": "Fiktivní katastr pro model"
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "case_id": "demo-brno-byt",
+    "mode": "synthetic",
+    "as_of": "2026-11-02",
+    "crs": "WGS84 / longitude, latitude",
+    "note": "Modelová geometrie, nikoli skutečná parcelní mapa."
+  }
+}

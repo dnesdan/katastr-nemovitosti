@@ -1,0 +1,4 @@
+-r requirements-pdf.txt
+jsonschema>=4.18,<5
+PyYAML>=6,<7
+reportlab>=4,<5

@@ -1,0 +1,24 @@
+{
+  "schema_version": "property-case/1.0",
+  "case": {
+    "id": "pripad-11c2478fe98e",
+    "title": "Nový případ",
+    "purpose": "Orientace v nemovitosti",
+    "locality": "Doplň obec a katastr",
+    "region": "",
+    "created_at": "2026-11-02T12:04:28Z",
+    "as_of": "2026-11-02",
+    "mode": "research",
+    "summary": "",
+    "scope_note": "Případ založen. Identita nemovitosti a dostupnost podkladů dosud nejsou ověřeny.",
+    "sharing": "private"
+  },
+  "objects": [],
+  "sources": [],
+  "documents": [],
+  "evidence": [],
+  "findings": [],
+  "rights": [],
+  "next_documents": [],
+  "research_log": []
+}

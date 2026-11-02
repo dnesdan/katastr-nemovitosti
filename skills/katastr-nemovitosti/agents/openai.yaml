@@ -1,0 +1,4 @@
+interface:
+  display_name: "Katastr a souvislosti"
+  short_description: "Prověření nemovitosti, listin a map v celé České republice"
+  default_prompt: "Použij $katastr-nemovitosti a prověř zadanou nemovitost z veřejných zdrojů a dodaných dokumentů. Připrav citovaný přehled, mapu a konkrétní další kroky."
